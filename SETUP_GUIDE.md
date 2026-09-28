@@ -66,7 +66,7 @@ OK
    - `__pycache__/` and Python bytecode files
    - Virtual environments (`venv/`, `.venv/`)
    - IDE and OS metadata (`.vscode/`, `.DS_Store`, `Thumbs.db`)
-3. When adding new secrets (e.g. Supabase service keys, Gemini API keys), always add placeholders in `.env.example`.
+3. When adding new secrets (e.g. Supabase service keys, third-party tokens), always add placeholders in `.env.example`.
 
 ---
 

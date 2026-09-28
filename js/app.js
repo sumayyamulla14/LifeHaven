@@ -19,7 +19,10 @@ class LifeHavenApp {
       || 'light';
     this.applyTheme(savedTheme);
 
-    // 3. Initialize systems
+    // 3. Initialize systems & Supabase configuration
+    if (window.AppConfig?.load) {
+      window.AppConfig.load();
+    }
     this.initClock();
     this.initEventListeners();
 

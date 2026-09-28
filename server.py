@@ -95,28 +95,29 @@ class LifeHavenHandler(http.server.SimpleHTTPRequestHandler):
         # 1. System Status Endpoint
         if path == "/api/status":
             load_env()
-            api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-            is_valid_format = bool(api_key and api_key != "your_gemini_api_key_here")
-            masked_key = ""
-            if is_valid_format and len(api_key) > 8:
-                masked_key = f"{api_key[:4]}...{api_key[-4:]}"
-
             self.send_json_response(200, {
                 "success": True,
                 "data": {
                     "appName": "Life Haven",
                     "status": "online",
-                    "backendPhase": 2,
-                    "apiKeyConfigured": is_valid_format,
-                    "maskedKey": masked_key,
                     "supabaseConfigured": bool(os.environ.get("SUPABASE_URL")),
-                    "model": os.environ.get("GEMINI_MODEL", "gemini-1.5-flash"),
                     "serverPort": PORT
                 }
             })
             return
 
-        # 2. Life Haven REST API Endpoints
+        # 2. Supabase Client Configuration (Safe public credentials only)
+        if path == "/api/config":
+            load_env()
+            self.send_json_response(200, {
+                "success": True,
+                "supabase_url": os.environ.get("SUPABASE_URL", "").strip(),
+                "supabase_anon_key": os.environ.get("SUPABASE_ANON_KEY", "").strip(),
+                "status": "online"
+            })
+            return
+
+        # 3. Life Haven REST API Endpoints
         if path.startswith("/api/"):
             try:
                 status_code, response_data = dispatch_request("GET", path, query_params)
@@ -129,7 +130,7 @@ class LifeHavenHandler(http.server.SimpleHTTPRequestHandler):
                 })
             return
 
-        # 3. Fallback to serving static frontend files (HTML, CSS, JS)
+        # 4. Fallback to serving static frontend files (HTML, CSS, JS)
         super().do_GET()
 
     def do_POST(self):
@@ -151,15 +152,7 @@ class LifeHavenHandler(http.server.SimpleHTTPRequestHandler):
                 })
                 return
 
-        # 1. Legacy AI endpoints (Gemini Integration)
-        if path == "/api/ai/generate":
-            self.handle_gemini_generate(payload)
-            return
-        elif path == "/api/ai/save-key":
-            self.handle_gemini_save_key(payload)
-            return
-
-        # 2. Life Haven REST API Endpoints
+        # Life Haven REST API Endpoints
         if path.startswith("/api/"):
             try:
                 status_code, response_data = dispatch_request("POST", path, query_params, payload)
@@ -173,93 +166,6 @@ class LifeHavenHandler(http.server.SimpleHTTPRequestHandler):
             return
 
         super().do_POST()
-
-    def handle_gemini_generate(self, payload: dict):
-        """Proxy handler for Google Gemini AI calls."""
-        load_env()
-        api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-        if not api_key or api_key == "your_gemini_api_key_here":
-            self.send_json_response(400, {
-                "success": False,
-                "error": "GEMINI_API_KEY is not configured in .env file.",
-                "tip": "Open .env and set your Google Gemini API key if you wish to use AI generation."
-            })
-            return
-
-        model = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash")
-        user_prompt = payload.get("prompt", "")
-        system_instruction = payload.get("systemInstruction", "")
-        json_mode = payload.get("jsonMode", False)
-
-        gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
-        gemini_payload = {
-            "contents": [{"parts": [{"text": user_prompt}]}]
-        }
-
-        if system_instruction:
-            gemini_payload["systemInstruction"] = {"parts": [{"text": system_instruction}]}
-        if json_mode:
-            gemini_payload["generationConfig"] = {"responseMimeType": "application/json"}
-
-        try:
-            req_data = json.dumps(gemini_payload).encode("utf-8")
-            req = urllib.request.Request(
-                gemini_url,
-                data=req_data,
-                headers={"Content-Type": "application/json"},
-                method="POST"
-            )
-
-            with urllib.request.urlopen(req, timeout=30) as response:
-                res_body = response.read().decode("utf-8")
-                res_data = json.loads(res_body)
-                candidate_text = ""
-                try:
-                    candidate_text = res_data["candidates"][0]["content"]["parts"][0]["text"]
-                except (KeyError, IndexError):
-                    candidate_text = json.dumps(res_data)
-
-                self.send_json_response(200, {
-                    "success": True,
-                    "data": {
-                        "text": candidate_text,
-                        "model": model
-                    }
-                })
-        except urllib.error.HTTPError as e:
-            err_msg = e.read().decode("utf-8", errors="ignore")
-            self.send_json_response(e.code, {"success": False, "error": f"AI API error: {err_msg}"})
-        except Exception as e:
-            self.send_json_response(500, {"success": False, "error": f"Internal Error: {str(e)}"})
-
-    def handle_gemini_save_key(self, payload: dict):
-        """Saves environment settings to .env file."""
-        try:
-            new_key = payload.get("apiKey", "").strip()
-            new_model = payload.get("model", "gemini-1.5-flash").strip()
-            env_path = os.path.join(DIRECTORY, ".env")
-            with open(env_path, "w", encoding="utf-8") as f:
-                f.write("# ==========================================================\n")
-                f.write("# LIFE HAVEN — ENVIRONMENT CONFIGURATION\n")
-                f.write("# ==========================================================\n")
-                f.write("PORT=3000\n")
-                f.write("HOST=127.0.0.1\n")
-                f.write("DEBUG=True\n\n")
-                f.write("SECRET_KEY=\n")
-                f.write("SUPABASE_URL=\n")
-                f.write("SUPABASE_ANON_KEY=\n")
-                f.write("SUPABASE_SERVICE_ROLE_KEY=\n")
-                f.write("ADMIN_EMAILS=\n\n")
-                f.write(f"GEMINI_API_KEY={new_key}\n")
-                f.write(f"GEMINI_MODEL={new_model}\n")
-
-            load_env()
-            self.send_json_response(200, {
-                "success": True,
-                "data": {"message": "Successfully saved configurations to .env"}
-            })
-        except Exception as e:
-            self.send_json_response(500, {"success": False, "error": str(e)})
 
 
 def run():

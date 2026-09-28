@@ -1,6 +1,7 @@
 # Life Haven — Women's Wellness & Hormonal Vitality Platform
-# Python Backend Dependencies
+# Python Backend & Supabase Dependencies
 
 python-dotenv>=1.0.0
 pytest>=8.0.0
 requests>=2.31.0
+supabase>=2.15.0
