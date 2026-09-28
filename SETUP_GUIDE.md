@@ -74,24 +74,29 @@ OK
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/dashboard` | Aggregated user health metrics, hydration, cycle, and habits |
+| `GET` | `/api/dashboard/summary` | Aggregated user health metrics, hydration, cycle, and habits |
+| `GET` | `/api/dashboard/daily-wellness` | Daily wellness check-in, mood, and recommendations |
 | `GET` | `/api/workouts` | Complete library of 23 workout routines with exercises and visuals |
-| `GET` | `/api/workouts/history` | Log of completed user workout sessions |
-| `POST` | `/api/workouts/log` | Register a completed workout session |
+| `GET` | `/api/workouts/{id}` | Detailed workout routine specifications and exercises |
+| `POST` | `/api/workouts/complete` | Register a completed workout session |
+| `GET` | `/api/period/cycle` | Current cycle statistics, phase, and next period estimate |
+| `GET` | `/api/period/history` | Historical menstrual cycle dates and logs |
+| `GET` | `/api/period/symptoms` | List of logged symptoms |
+| `POST` | `/api/period/records` | Update period start and end dates |
+| `POST` | `/api/period/symptoms` | Log daily symptoms (cramps, energy, mood, etc.) |
 | `GET` | `/api/nutrition/foods` | 34 whole foods with nutrition profiles, macros, and visuals |
 | `GET` | `/api/nutrition/meals` | 20 meal blueprints with ingredients and preparation steps |
-| `GET` | `/api/period/cycle` | Current cycle statistics, phase, and next period estimate |
-| `POST` | `/api/period/dates` | Update period start and end dates |
-| `POST` | `/api/period/symptoms` | Log daily symptoms (cramps, energy, mood, etc.) |
-| `GET` | `/api/hydration` | Current hydration volume, target, and today's intake logs |
+| `GET` | `/api/nutrition/categories` | Food categories and nutrient groups |
+| `GET` | `/api/hydration/today` | Current hydration volume, target, and today's intake logs |
+| `GET` | `/api/hydration/history` | Historical hydration logs |
 | `POST` | `/api/hydration/add` | Register fluid intake (mL and vessel label) |
-| `GET` | `/api/sleep` | Last night's sleep metrics, quality, and deep sleep hours |
-| `POST` | `/api/sleep/log` | Record sleep duration and quality |
-| `GET` | `/api/mood` | Latest mood state and journal entries |
-| `POST` | `/api/mood/log` | Record mood tag, note, and timestamp |
+| `POST` | `/api/hydration/reset` | Reset today's hydration intake count |
+| `GET` | `/api/sleep/history` | Last night's sleep metrics, quality, and deep sleep hours |
+| `POST` | `/api/sleep/record` | Record sleep duration and quality |
+| `GET` | `/api/mood/history` | Latest mood state and journal entries |
+| `POST` | `/api/mood/entry` | Record mood tag, note, and timestamp |
 | `GET` | `/api/habits` | List of daily wellness rituals and completion state |
 | `POST` | `/api/habits/toggle` | Toggle habit completion status |
-| `GET` | `/api/settings` | User profile settings and notification preferences |
-| `PUT` | `/api/settings` | Update user goals, targets, and cycle length |
+| `GET` | `/api/progress/summary` | Overall wellness completion percentages and streaks |
 | `GET` | `/api/export` | Complete JSON export of all user data |
 | `POST` | `/api/reset` | Reset application state to default initial values |
