@@ -780,15 +780,30 @@ const HealthModule = {
     if (headlineEl && bp.headline) headlineEl.textContent = bp.headline;
     if (subtitleEl && bp.subtitle) subtitleEl.textContent = bp.subtitle;
 
-    container.innerHTML = bp.pillars.map(pillar => `
-      <div class="plate-pillar-card" style="border-left-color: ${pillar.color || 'var(--brand-primary)'};">
-        <span class="plate-share-pill" style="background: ${pillar.color || '#10b981'}15; color: ${pillar.color || '#10b981'}; border: 1px solid ${pillar.color || '#10b981'}40;">
-          ${pillar.share}
-        </span>
-        <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">${pillar.name}</h4>
-        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">${pillar.desc}</p>
-      </div>
-    `).join('');
+        const PLATE_IMAGES = {
+      "1/2 Plate: Colorful Vegetables & Fruits": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+      "1/4 Plate: Quality Clean Protein": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+      "1/4 Plate: Complex Carbs & Whole Grains": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
+      "1–2 Tbsp: Healthy Essential Fats": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80",
+      "Intracellular Hydration": "https://images.unsplash.com/photo-1560023907-5f339617ea30?auto=format&fit=crop&w=600&q=80"
+    };
+
+    container.innerHTML = bp.pillars.map(pillar => {
+      const imgUrl = PLATE_IMAGES[pillar.name] || 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80';
+      return `
+        <div class="plate-pillar-card" style="border-left-color: ${pillar.color || 'var(--brand-primary)'};">
+          <div class="plate-pillar-thumb-wrap">
+            <img src="${imgUrl}" alt="${pillar.name}" class="plate-pillar-thumb" loading="lazy" onerror="this.parentElement.style.display='none';">
+            <span class="food-card-attribution">Verified Nutrition Photography</span>
+          </div>
+          <span class="plate-share-pill" style="background: ${pillar.color || '#10b981'}15; color: ${pillar.color || '#10b981'}; border: 1px solid ${pillar.color || '#10b981'}40;">
+            ${pillar.share}
+          </span>
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 8px 0 6px 0;">${pillar.name}</h4>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">${pillar.desc}</p>
+        </div>
+      `;
+    }).join('');
   },
 
   renderWomensHealth() {
@@ -797,6 +812,13 @@ const HealthModule = {
 
     const wh = getHealthState().nutrition?.womensHealth;
     if (!wh || !wh.topics) return;
+
+        const WH_IMAGES = {
+      "iron": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80",
+      "calcium": "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=600&q=80",
+      "cycle": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80",
+      "hydration": "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&q=80"
+    };
 
     const getTopicIcon = (iconName) => {
       const icons = {
@@ -808,23 +830,30 @@ const HealthModule = {
       return icons[iconName] || `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg>`;
     };
 
-    container.innerHTML = wh.topics.map(topic => `
-      <div class="wh-topic-card">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-sm); background: #fef2f2; color: #e11d48; border: 1px solid #fecaca; flex-shrink: 0;">
-            ${getTopicIcon(topic.icon)}
-          </span>
-          <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">${topic.title}</h4>
+    container.innerHTML = wh.topics.map(topic => {
+      const imgUrl = WH_IMAGES[topic.icon] || 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80';
+      return `
+        <div class="wh-topic-card">
+          <div class="wh-topic-thumb-wrap">
+            <img src="${imgUrl}" alt="${topic.title}" class="wh-topic-thumb" loading="lazy" onerror="this.parentElement.style.display='none';">
+            <span class="food-card-attribution">Verified Educational Visual</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: var(--radius-sm); background: #fef2f2; color: #e11d48; border: 1px solid #fecaca; flex-shrink: 0;">
+              ${getTopicIcon(topic.icon)}
+            </span>
+            <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">${topic.title}</h4>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;">${topic.summary}</p>
+          <div style="background: var(--bg-card-subtle); border-radius: var(--radius-md); padding: 12px 14px;">
+            <strong style="font-size: 11.5px; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 6px;">Key Actionable Takeaways</strong>
+            <ul style="font-size: 12.5px; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.6;">
+              ${(topic.keyPoints || []).map(kp => `<li style="margin-bottom: 4px;">${kp}</li>`).join('')}
+            </ul>
+          </div>
         </div>
-        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;">${topic.summary}</p>
-        <div style="background: var(--bg-card-subtle); border-radius: var(--radius-md); padding: 12px 14px;">
-          <strong style="font-size: 11.5px; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 6px;">Key Actionable Takeaways</strong>
-          <ul style="font-size: 12.5px; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.6;">
-            ${(topic.keyPoints || []).map(kp => `<li style="margin-bottom: 4px;">${kp}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   },
 
   /* =============================================================

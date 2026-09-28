@@ -979,7 +979,7 @@ const initialMockData = {
         },
         {
             "id": "f-tofu",
-            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo by Vegan Liftz / Unsplash",
             "name": "Organic Firm Tofu",
             "category": "protein",
@@ -1242,7 +1242,7 @@ const initialMockData = {
         },
         {
             "id": "f-chia-seeds",
-            "image": "https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo by Maddi Bazzocco / Unsplash",
             "name": "Chia & Whole Golden Flaxseeds",
             "category": "fiber",
@@ -1337,7 +1337,7 @@ const initialMockData = {
         },
         {
             "id": "meal-b3",
-            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo via Unsplash",
             "type": "breakfast",
             "title": "High-Protein Greek Yogurt & Chia Parfait",
@@ -1365,7 +1365,7 @@ const initialMockData = {
         },
         {
             "id": "meal-b4",
-            "image": "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1584776296944-ab6fb57b0bdd?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo via Unsplash",
             "type": "breakfast",
             "title": "Warm Spiced Apple & Quinoa Porridge",
@@ -1455,7 +1455,7 @@ const initialMockData = {
         },
         {
             "id": "meal-l3",
-            "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo via Unsplash",
             "type": "lunch",
             "title": "Rainbow Tofu & Edamame Crunch Wrap",
@@ -1718,7 +1718,7 @@ const initialMockData = {
         },
         {
             "id": "meal-s4",
-            "image": "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo via Unsplash",
             "type": "snack",
             "title": "Cucumber Batons with Herbed Tahini Dip",
@@ -1746,7 +1746,7 @@ const initialMockData = {
         },
         {
             "id": "meal-q1",
-            "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80",
+            "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80",
             "attribution": "Photo via Unsplash",
             "type": "quick",
             "title": "10-Minute Stir-Fried Greens & Scrambled Eggs",
@@ -1952,7 +1952,7 @@ const initialMockData = {
   workouts: [
     {
         "id": "w-beg-fullbody",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Full Body Beginner Routine",
         "level": "Beginner",
@@ -2141,7 +2141,7 @@ const initialMockData = {
     },
     {
         "id": "w-beg-cardio",
-        "image": "https://images.unsplash.com/photo-1434596922112-19c563067271?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Beginner Low-Impact Cardio Flow",
         "level": "Beginner",
@@ -2483,7 +2483,7 @@ const initialMockData = {
     },
     {
         "id": "w-beg-1",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Gentle Morning Mobility & Awakening",
         "level": "Beginner",
@@ -2635,7 +2635,7 @@ const initialMockData = {
     },
     {
         "id": "w-beg-flex",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Beginner Full Body Flexibility & Release",
         "level": "Beginner",
@@ -2787,7 +2787,7 @@ const initialMockData = {
     },
     {
         "id": "w-beg-core",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Beginner Core & Pelvic Floor Foundations",
         "level": "Beginner",
@@ -2942,7 +2942,7 @@ const initialMockData = {
     },
     {
         "id": "w-beg-lower",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Beginner Lower Body Awakening",
         "level": "Beginner",
@@ -3130,7 +3130,7 @@ const initialMockData = {
     },
     {
         "id": "w-beg-upper",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Beginner Upper Body & Posture Alignment",
         "level": "Beginner",
@@ -3286,7 +3286,7 @@ const initialMockData = {
     },
     {
         "id": "w-int-fullbody",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Intermediate Total Body Conditioning",
         "level": "Intermediate",
@@ -3472,7 +3472,7 @@ const initialMockData = {
     },
     {
         "id": "w-str-1",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Full Body Functional Strength",
         "level": "Intermediate",
@@ -3659,7 +3659,7 @@ const initialMockData = {
     },
     {
         "id": "w-cardio-1",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Low-Impact Aerobic Flow & Stamina",
         "level": "Intermediate",
@@ -3997,7 +3997,7 @@ const initialMockData = {
     },
     {
         "id": "w-upper-1",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Upper Body Posture & Shoulder Sculpt",
         "level": "Intermediate",
@@ -4151,7 +4151,7 @@ const initialMockData = {
     },
     {
         "id": "w-int-lower",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Intermediate Lower Body Sculpt & Glute Burn",
         "level": "Intermediate",
@@ -4338,7 +4338,7 @@ const initialMockData = {
     },
     {
         "id": "w-int-mobility",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Dynamic Joint Mobility & Hip Opener",
         "level": "Intermediate",
@@ -4491,7 +4491,7 @@ const initialMockData = {
     },
     {
         "id": "w-mob-1",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "De-Stressing Evening Yoga & Stretch",
         "level": "Intermediate",
@@ -4643,7 +4643,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-strength",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced Hypertrophy & Power Strength",
         "level": "Advanced",
@@ -4830,7 +4830,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-fullbody",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced Total Body Athletic Conditioning",
         "level": "Advanced",
@@ -5017,7 +5017,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-upper",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced Upper Body Definition & Power",
         "level": "Advanced",
@@ -5202,7 +5202,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-lower",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1567598508481-65985588e295?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced Lower Body Power & Single-Leg Control",
         "level": "Advanced",
@@ -5389,7 +5389,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-core",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced Core Shred & Rotational Power",
         "level": "Advanced",
@@ -5574,7 +5574,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-cardio",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced High-Intensity Interval Training (HIIT)",
         "level": "Advanced",
@@ -5758,7 +5758,7 @@ const initialMockData = {
     },
     {
         "id": "w-adv-mobility",
-        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80",
+        "image": "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=600&q=80",
         "attribution": "Photo via Unsplash License",
         "title": "Advanced Animal Flow & Movement Transitions",
         "level": "Advanced",
