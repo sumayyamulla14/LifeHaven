@@ -1,0 +1,11 @@
+/**
+ * LIFEHAVEN — ROOT STYLESHEET ENTRY
+ * 
+ * Imports the modular CSS architecture:
+ * 1. main.css       - Base styles, variables, typography, and layout grid
+ * 2. components.css - Specialized UI components, cards, tabs, and modals
+ * 3. themes.css     - Curated themes (Rose Haven, Emerald Sanctuary, Nordic Serenity, Sunset Bloom)
+ */
+@import url("css/main.css");
+@import url("css/components.css");
+@import url("css/themes.css");

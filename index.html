@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Haven — Your Health, Your Haven</title>
+  <meta name="description" content="Life Haven: Modern, executive health and wellness platform combining menstrual cycle tracking, nutrition explorer, hydration, sleep, mood, balanced movement, and health education.">
+  
+  <!-- Standalone SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Professional Typography (Inter & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Modular Vanilla CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Instant Theme Initializer (prevents light mode flash) -->
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('lifehaven_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-theme="light">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ======================================================== -->
+  <!-- CAREER DESK DESKTOP APP SHELL                            -->
+  <!-- ======================================================== -->
+  <div class="app-shell">
+
+    <!-- ====================================================== -->
+    <!-- 1. LEFT SIDEBAR NAVIGATION                             -->
+    <!-- ====================================================== -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <!-- Sidebar Brand Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-brand" onclick="window.app.switchTab('tab-dashboard')">
+          <div class="brand-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9z"></path>
+              <path d="M9 22V12h6v10"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-title">LIFE HAVEN</div>
+            <div class="brand-tagline">"Your Health, Your Haven"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Overview</div>
+        <button class="sidebar-item active" data-tab="tab-dashboard">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </span>
+            <span>Dashboard</span>
+          </div>
+          <span class="sidebar-badge">Live</span>
+        </button>
+
+        <button class="sidebar-item" data-tab="tab-period">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9z"/>
+              </svg>
+            </span>
+            <span>Period & Cycle</span>
+          </div>
+          <span class="sidebar-badge" id="sidebar-cycle-badge">Day 14</span>
+        </button>
+
+        <div class="nav-section-label">Wellness Pillars</div>
+        <button class="sidebar-item" data-tab="tab-nutrition">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 4 13a7 7 0 0 1 12.3-4.7L20 4l-4.3 3.7A7 7 0 0 1 11 20z"/><path d="M11 13l4-4"/>
+              </svg>
+            </span>
+            <span>Food & Nutrition</span>
+          </div>
+        </button>
+
+        <button class="sidebar-item" data-tab="tab-workout">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 5v14M18 5v14M2 9h4M2 15h4M18 9h4M18 15h4M6 12h12"/>
+              </svg>
+            </span>
+            <span>Workouts</span>
+          </div>
+          <span class="sidebar-badge">6</span>
+        </button>
+
+        <button class="sidebar-item" data-tab="tab-hydration">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            </span>
+            <span>Hydration</span>
+          </div>
+          <span class="sidebar-badge" id="sidebar-water-badge">70%</span>
+        </button>
+
+        <button class="sidebar-item" data-tab="tab-sleep">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </span>
+            <span>Sleep & Rest</span>
+          </div>
+        </button>
+
+        <button class="sidebar-item" data-tab="tab-wellness">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </span>
+            <span>Mood & Breathing</span>
+          </div>
+        </button>
+
+        <div class="nav-section-label">Insights & Care</div>
+        <button class="sidebar-item" data-tab="tab-education">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+            </span>
+            <span>Health Guides</span>
+          </div>
+        </button>
+
+        <button class="sidebar-item" data-tab="tab-progress">
+          <div class="sidebar-item-content">
+            <span class="sidebar-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </span>
+            <span>Progress & Rituals</span>
+          </div>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer / User Profile -->
+      <div class="sidebar-footer">
+        <div class="user-profile-widget" onclick="window.app.openControlCenter()">
+          <div class="user-avatar">E</div>
+          <div>
+            <div class="user-meta-name" id="sidebar-user-name">Elena</div>
+            <div class="user-meta-sub">Personal Haven</div>
+          </div>
+        </div>
+        <button class="btn-icon-only" onclick="window.app.openControlCenter()" title="Settings & Goals">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ====================================================== -->
+    <!-- 2. MAIN APPLICATION WORKSPACE                          -->
+    <!-- ====================================================== -->
+    <div class="app-main">
+
+      <!-- Top Navbar (CareerDesk style) -->
+      <header class="top-navbar">
+        <div class="top-nav-left">
+          <div class="breadcrumb-trail">
+            <span>Life Haven</span>
+            <span>/</span>
+            <span class="breadcrumb-active" id="top-breadcrumb">Dashboard</span>
+          </div>
+
+          <div class="top-nav-search">
+            <svg class="search-lens" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="global-search-bar" placeholder="Search foods, workouts, guides...">
+          </div>
+        </div>
+
+        <div class="top-nav-right">
+          <!-- Real-Time Clock Pill -->
+          <div class="clock-widget">
+            <span class="live-indicator pulse"></span>
+            <span id="live-time" class="mono-text">00:00:00</span>
+            <span>•</span>
+            <span id="live-date">Sun, Sep 27</span>
+          </div>
+
+          <!-- Quick Actions -->
+          <button class="btn btn-white btn-sm" onclick="HealthModule.addWater(250, 'Quick Glass')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            <span>+250 mL</span>
+          </button>
+
+          <button class="btn btn-white btn-sm" onclick="HealthModule.startBreathingExercise('box-breathing')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+            <span>Breathe</span>
+          </button>
+
+          <!-- Dark/Light Theme Toggle -->
+          <button class="btn-icon-only" onclick="window.app.toggleThemeMode()" title="Toggle Light / Dark Mode">
+            <svg id="theme-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content Container -->
+      <main class="app-content">
+
+        <!-- ==================================================== -->
+        <!-- TAB 1: DASHBOARD                                     -->
+        <!-- ==================================================== -->
+        <section id="tab-dashboard" class="tab-pane active">
+          <!-- Welcome Banner -->
+          <div class="dashboard-welcome-banner">
+            <div class="dw-left">
+              <span class="dw-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+                Whole Health Portal
+              </span>
+              <h1 class="dw-title" id="dash-greeting-title">Welcome back, Elena</h1>
+              <p class="dw-desc">Your recovery rhythm is high today. You have completed 4 of 6 daily wellness habits and achieved 70% hydration.</p>
+            </div>
+            <div class="dw-actions">
+              <button class="btn btn-primary" onclick="window.app.switchTab('tab-period')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9z"/></svg>
+                <span>Cycle Status</span>
+              </button>
+              <button class="btn btn-white" onclick="HealthModule.startBreathingExercise('box-breathing')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                <span>Guided Breath</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Metrics Row (4 Cards) -->
+          <div class="kpi-row">
+            <!-- 1. Hydration KPI -->
+            <div class="kpi-card" onclick="window.app.switchTab('tab-hydration')" style="cursor: pointer;">
+              <div class="kpi-top">
+                <div class="kpi-icon-box kpi-icon-teal">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                </div>
+                <span class="kpi-trend trend-pos" id="dash-water-pct">70%</span>
+              </div>
+              <div>
+                <span class="kpi-label">Hydration Intake</span>
+                <h3 class="kpi-value" id="dash-water-val">1,750 <span class="unit">/ 2,500 mL</span></h3>
+                <span class="kpi-sub">750 mL remaining today</span>
+              </div>
+              <div class="kpi-progress">
+                <div class="kpi-progress-bar" id="dash-water-bar" style="width: 70%;"></div>
+              </div>
+            </div>
+
+            <!-- 2. Sleep KPI -->
+            <div class="kpi-card" onclick="window.app.switchTab('tab-sleep')" style="cursor: pointer;">
+              <div class="kpi-top">
+                <div class="kpi-icon-box kpi-icon-purple">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </div>
+                <span class="kpi-trend trend-pos">88/100</span>
+              </div>
+              <div>
+                <span class="kpi-label">Sleep Restoration</span>
+                <h3 class="kpi-value" id="dash-sleep-val">7.5 <span class="unit">Hours</span></h3>
+                <span class="kpi-sub" id="dash-sleep-score">Restful • Deep: 2.1 hrs</span>
+              </div>
+              <div class="kpi-progress">
+                <div class="kpi-progress-bar" style="width: 88%; background: #7c3aed;"></div>
+              </div>
+            </div>
+
+            <!-- 3. Menstrual Cycle KPI -->
+            <div class="kpi-card" onclick="window.app.switchTab('tab-period')" style="cursor: pointer;">
+              <div class="kpi-top">
+                <div class="kpi-icon-box kpi-icon-rose">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9z"/></svg>
+                </div>
+                <span class="kpi-trend trend-neutral" id="dash-cycle-phase">Follicular</span>
+              </div>
+              <div>
+                <span class="kpi-label">Menstrual Cycle</span>
+                <h3 class="kpi-value">Day 14</h3>
+                <span class="kpi-sub" id="dash-cycle-days-until">~14 days to next period</span>
+              </div>
+              <div class="kpi-progress">
+                <div class="kpi-progress-bar" style="width: 50%; background: #e11d48;"></div>
+              </div>
+            </div>
+
+            <!-- 4. Habits KPI -->
+            <div class="kpi-card" onclick="window.app.switchTab('tab-progress')" style="cursor: pointer;">
+              <div class="kpi-top">
+                <div class="kpi-icon-box kpi-icon-amber">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <span class="kpi-trend trend-pos">8-Day Streak</span>
+              </div>
+              <div>
+                <span class="kpi-label">Daily Habits</span>
+                <h3 class="kpi-value" id="dash-habits-val">4 of 6 done</h3>
+                <span class="kpi-sub">86% completion rate</span>
+              </div>
+              <div class="kpi-progress">
+                <div class="kpi-progress-bar" id="dash-habits-bar" style="width: 66%; background: #d97706;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle 2-Column Overview -->
+          <div class="two-col-grid">
+            <!-- Left: Today's Pillars & Recommendations -->
+            <div class="card">
+              <div class="card-header flex-between">
+                <div>
+                  <h3 class="card-title">Daily Wellness Action Plan</h3>
+                  <p class="card-subtitle">Recommended rituals aligned with your Follicular Phase energy.</p>
+                </div>
+              </div>
+              
+              <div class="stack-v">
+                <div class="habit-row-clean done" onclick="HealthModule.toggleHabit(1)">
+                  <div class="hrc-check">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <strong>Morning Warm Hydration (500 mL)</strong>
+                    <div style="font-size: 12px; color: var(--text-muted);">Cellular Saturation • Completed 8:00 AM</div>
+                  </div>
+                </div>
+
+                <div class="habit-row-clean done" onclick="HealthModule.toggleHabit(2)">
+                  <div class="hrc-check">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <strong>15-Minute Sunlight Walk</strong>
+                    <div style="font-size: 12px; color: var(--text-muted);">Circadian Clock Synchronization • Completed 8:45 AM</div>
+                  </div>
+                </div>
+
+                <div class="habit-row-clean done" onclick="HealthModule.toggleHabit(3)">
+                  <div class="hrc-check">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                  <div>
+                    <strong>Nourishing Plant Protein & Iron Plate</strong>
+                    <div style="font-size: 12px; color: var(--text-muted);">Mediterranean Quinoa & Greens • Completed 1:15 PM</div>
+                  </div>
+                </div>
+
+                <div class="habit-row-clean" onclick="HealthModule.toggleHabit(4)">
+                  <div class="hrc-check"></div>
+                  <div>
+                    <strong>Gentle Movement: 20-min Mobility & Flow</strong>
+                    <div style="font-size: 12px; color: var(--text-muted);">Joint Decompression • Scheduled for 5:30 PM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Quick Health Logger -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Quick Log</h3>
+                <p class="card-subtitle">Register fluids or check in your current mood.</p>
+              </div>
+
+              <!-- Quick Water Add -->
+              <div style="margin-bottom: 20px;">
+                <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Register Fluid</label>
+                <div style="display: flex; gap: 8px; margin-top: 6px;">
+                  <button class="btn btn-white btn-sm" onclick="HealthModule.addWater(250, 'Standard Glass')">+250 mL</button>
+                  <button class="btn btn-white btn-sm" onclick="HealthModule.addWater(500, 'Flask')">+500 mL</button>
+                  <button class="btn btn-white btn-sm" onclick="HealthModule.addWater(750, 'Bottle')">+750 mL</button>
+                </div>
+              </div>
+
+              <!-- Quick Mood Check -->
+              <div>
+                <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Current Mood</label>
+                <div class="mood-buttons-grid" style="margin-top: 6px;">
+                  <button class="mood-pill-btn active" onclick="HealthModule.selectMood('Calm & Centered')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    <span style="font-size: 11px;">Calm</span>
+                  </button>
+                  <button class="mood-pill-btn" onclick="HealthModule.selectMood('High Energy & Joyful')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span style="font-size: 11px;">Energized</span>
+                  </button>
+                  <button class="mood-pill-btn" onclick="HealthModule.selectMood('Sensitive / Low Energy')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    <span style="font-size: 11px;">Tired</span>
+                  </button>
+                </div>
+              </div>
+
+              <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
+                <button class="btn btn-primary" style="width: 100%;" onclick="HealthModule.startBreathingExercise('box-breathing')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                  <span>Begin 2-Min Reset Breathwork</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 2: PERIOD & MENSTRUAL CYCLE TRACKER              -->
+        <!-- ==================================================== -->
+        <section id="tab-period" class="tab-pane">
+          <!-- Cycle Header Card -->
+          <div class="period-header-card">
+            <div>
+              <span class="dw-badge" style="background:#fff; border-color:#fecdd3; color:#e11d48;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9z"/></svg>
+                Cycle Vitality
+              </span>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary);" id="period-phase-name">Follicular Phase</h2>
+              <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 4px;" id="period-phase-desc">Estrogen rises to support steady energy, cognitive sharpness, and creativity.</p>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Estimated Next Period</span>
+              <div style="font-size: 20px; font-weight: 800; color: #e11d48;" id="period-next-estimate">Oct 12, 2026</div>
+              <div style="font-size: 11px; color: var(--brand-amber); font-weight: 600;">* Estimate based on entered history</div>
+            </div>
+          </div>
+
+          <div class="two-col-grid">
+            <!-- Left: Interactive Calendar -->
+            <div class="card">
+              <div class="cal-header-bar">
+                <div>
+                  <h3 class="card-title">Cycle Calendar</h3>
+                  <p class="card-subtitle">Review cycle days, estimated fertile window, and period days.</p>
+                </div>
+                <div class="cal-controls">
+                  <button class="cal-control-btn" onclick="HealthModule.changeCalendarMonth(-1)">&larr;</button>
+                  <span id="period-calendar-month-year" style="font-weight: 700; font-size: 14px; min-width: 120px; text-align: center;">September 2026</span>
+                  <button class="cal-control-btn" onclick="HealthModule.changeCalendarMonth(1)">&rarr;</button>
+                </div>
+              </div>
+
+              <div id="period-calendar-grid">
+                <!-- Rendered dynamically -->
+              </div>
+
+              <div class="cal-legend-bar">
+                <div class="legend-pill"><span class="legend-color-dot" style="background:#e11d48;"></span> Period Flow</div>
+                <div class="legend-pill"><span class="legend-color-dot" style="background:#fb7185;"></span> Estimated Next Period</div>
+                <div class="legend-pill"><span class="legend-color-dot" style="background:#7c3aed;"></span> Estimated Ovulation</div>
+                <div class="legend-pill"><span class="legend-color-dot" style="border:1.5px solid var(--brand-primary);"></span> Today</div>
+              </div>
+            </div>
+
+            <!-- Right: Period & Symptom Logger -->
+            <div class="stack-v">
+              <!-- Log Dates Form -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Update Period Dates</h3>
+                  <p class="card-subtitle">Set your last cycle start and end dates.</p>
+                </div>
+                <form onsubmit="event.preventDefault(); HealthModule.savePeriodDates();">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+                    <div class="form-group">
+                      <label for="period-input-start">Period Start *</label>
+                      <input type="date" id="period-input-start" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="period-input-end">Period End</label>
+                      <input type="date" id="period-input-end">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-sm">Save Period Dates</button>
+                </form>
+              </div>
+
+              <!-- Log Symptoms Form -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Daily Symptoms & Notes</h3>
+                  <p class="card-subtitle">Track flow, discomfort level, and signals.</p>
+                </div>
+                <form onsubmit="event.preventDefault(); HealthModule.saveTodaySymptoms();">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                    <div class="form-group">
+                      <label for="period-flow-select">Flow Intensity</label>
+                      <select id="period-flow-select">
+                        <option value="None">None</option>
+                        <option value="Spotting">Spotting</option>
+                        <option value="Light">Light</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Heavy">Heavy</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="period-cramps-select">Cramps Level</label>
+                      <select id="period-cramps-select">
+                        <option value="None">None</option>
+                        <option value="Mild">Mild</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="Severe">Severe</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Common Symptoms (Tap to toggle)</label>
+                    <div class="symptoms-cloud" id="period-symptoms-tags">
+                      <!-- Rendered dynamically -->
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="period-notes-input">Cycle Notes</label>
+                    <textarea id="period-notes-input" rows="2" placeholder="Body cues, cravings, mental state..."></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-white btn-sm">Save Today's Symptoms</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past Cycle History -->
+          <div class="card" style="margin-top: 24px;">
+            <div class="card-header">
+              <h3 class="card-title">Cycle History & Logs</h3>
+              <p class="card-subtitle">Chronological record of past cycles.</p>
+            </div>
+            <div id="period-history-list" class="stack-v" style="gap: 8px;">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 3: FOOD & NUTRITION EXPLORER                     -->
+        <!-- ==================================================== -->
+        <section id="tab-nutrition" class="tab-pane">
+          <!-- Nutrition Philosophy Banner -->
+          <div class="dashboard-welcome-banner" style="background: linear-gradient(135deg, #f0fdf4, #ffffff); border-color: #bbf7d0; margin-bottom: 24px;">
+            <div class="dw-left">
+              <span class="dw-badge" style="background:#fff; border-color:#bbf7d0; color:#15803d;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13a7 7 0 0 1 12.3-4.7L20 4l-4.3 3.7A7 7 0 0 1 11 20z"/><path d="M11 13l4-4"/></svg>
+                Whole Food Nutrition Library
+              </span>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary);">Nourishment Over Restriction</h2>
+              <p class="dw-desc">Every body is unique. We reject extreme medical diets and restrictive fads. Explore nutrient-dense superfoods packed with iron, calcium, fiber, healthy fats, balanced meal ideas, and cycle-aware nutrition.</p>
+            </div>
+          </div>
+
+          <!-- Section Switcher Tabs -->
+          <div class="subnav-tabs-bar" id="nutrition-subnav-bar">
+            <button class="subnav-tab-btn active" id="ntab-foods-btn" onclick="HealthModule.switchNutritionSection('foods')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+              Whole Foods Explorer
+            </button>
+            <button class="subnav-tab-btn" id="ntab-meals-btn" onclick="HealthModule.switchNutritionSection('meals')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+              Balanced Meal Ideas
+            </button>
+            <button class="subnav-tab-btn" id="ntab-plate-btn" onclick="HealthModule.switchNutritionSection('plate')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+              The Balanced Plate Blueprint
+            </button>
+            <button class="subnav-tab-btn" id="ntab-women-btn" onclick="HealthModule.switchNutritionSection('women')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18 4.5 4.5 0 0 1 0-9 4.5 4.5 0 0 0 0-9z"/></svg>
+              Women's Health Nutrition
+            </button>
+          </div>
+
+          <!-- Working Search Bar -->
+          <div class="library-search-bar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="nutrition-search-input" class="library-search-input" placeholder="Search foods, nutrients, benefits, or meal ingredients..." oninput="HealthModule.handleNutritionSearch(this.value)">
+            <button class="btn btn-xs btn-white" id="nutrition-search-clear" style="display:none;" onclick="HealthModule.clearNutritionSearch()">Clear</button>
+          </div>
+
+          <!-- 1. SECTION: FOODS EXPLORER -->
+          <div id="nutrition-section-foods">
+            <!-- Category Filter Bar -->
+            <div class="categories-filter-bar" id="nutrition-categories-bar">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Superfoods Grid -->
+            <div class="foods-cards-grid" id="nutrition-foods-grid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- 2. SECTION: BALANCED MEAL IDEAS -->
+          <div id="nutrition-section-meals" style="display: none;">
+            <div class="flex-between" style="margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary);">Nourishing Meal Blueprints</h3>
+                <p style="font-size: 13px; color: var(--text-muted);">Wholesome recipes combining quality protein, colorful fiber, and essential fats.</p>
+              </div>
+              <div class="meal-filter-bar" style="margin-bottom: 0;">
+                <button class="cat-pill active" id="meal-pill-all" onclick="HealthModule.setMealTypeFilter('all')">All Meals</button>
+                <button class="cat-pill" id="meal-pill-breakfast" onclick="HealthModule.setMealTypeFilter('breakfast')">Breakfast</button>
+                <button class="cat-pill" id="meal-pill-lunch" onclick="HealthModule.setMealTypeFilter('lunch')">Lunch</button>
+                <button class="cat-pill" id="meal-pill-dinner" onclick="HealthModule.setMealTypeFilter('dinner')">Dinner</button>
+                <button class="cat-pill" id="meal-pill-snack" onclick="HealthModule.setMealTypeFilter('snack')">Healthy Snacks</button>
+                <button class="cat-pill" id="meal-pill-quick" onclick="HealthModule.setMealTypeFilter('quick')">Quick & Simple</button>
+              </div>
+            </div>
+
+            <div class="meals-cards-grid" id="nutrition-meals-grid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- 3. SECTION: THE BALANCED PLATE BLUEPRINT -->
+          <div id="nutrition-section-plate" style="display: none;">
+            <div class="card" style="margin-bottom: 20px;">
+              <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;" id="plate-headline">The Balanced Plate Blueprint</h3>
+              <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;" id="plate-subtitle">A sustainable, joyful framework for whole-food nourishment without restrictive calorie counting.</p>
+              <div class="plate-blueprint-grid" id="plate-pillars-container">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. SECTION: WOMEN'S HEALTH NUTRITION -->
+          <div id="nutrition-section-women" style="display: none;">
+            <div class="card" style="margin-bottom: 20px;">
+              <div class="flex-between" style="flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+                <h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary);">Women's Health & Cycle-Aware Nutrition</h3>
+                <span class="sidebar-badge" style="background:#fef2f2; color:#e11d48; border-color:#fecaca;">Educational Guide</span>
+              </div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Evidence-based educational concepts regarding iron replenishment, bone mineral density, cycle-phased nutrition, and electrolyte balance.</p>
+              <div class="womens-health-grid" id="womens-health-topics-container">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 4: WORKOUTS (BALANCED MOVEMENT STUDIO)           -->
+        <!-- ==================================================== -->
+        <section id="tab-workout" class="tab-pane">
+          <div class="dashboard-welcome-banner" style="background: linear-gradient(135deg, #f8fafc, #ffffff); border-color: var(--border-subtle); margin-bottom: 24px;">
+            <div class="dw-left">
+              <span class="dw-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M2 9h4M2 15h4M18 9h4M18 15h4M6 12h12"/></svg>
+                Movement & Longevity Studio
+              </span>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--text-primary);">Complete Workout Library</h2>
+              <p class="dw-desc">Exercise that honors your body without burnout. Explore 23 complete routines across Beginner, Intermediate, and Advanced levels with step-by-step form tutorials, proper warm-ups, and cool-downs.</p>
+            </div>
+          </div>
+
+          <!-- Working Search Bar -->
+          <div class="library-search-bar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="workout-search-input" class="library-search-input" placeholder="Search workouts by name, focus area, equipment, or target muscles..." oninput="WorkoutModule.handleSearch(this.value)">
+            <button class="btn btn-xs btn-white" id="workout-search-clear" style="display:none;" onclick="WorkoutModule.clearSearch()">Clear</button>
+          </div>
+
+          <!-- Level Switcher Bar -->
+          <div class="subnav-tabs-bar" id="workout-level-bar">
+            <button class="subnav-tab-btn active" onclick="WorkoutModule.setLevel('all')">All Levels (23)</button>
+            <button class="subnav-tab-btn" onclick="WorkoutModule.setLevel('Beginner')">Beginner (8)</button>
+            <button class="subnav-tab-btn" onclick="WorkoutModule.setLevel('Intermediate')">Intermediate (8)</button>
+            <button class="subnav-tab-btn" onclick="WorkoutModule.setLevel('Advanced')">Advanced (7)</button>
+          </div>
+
+          <!-- Focus Area Filter Pills -->
+          <div class="categories-filter-bar" id="workout-focus-bar">
+            <button class="cat-pill active" onclick="WorkoutModule.setFocus('all')">All Focuses</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Full Body')">Full Body</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Strength')">Strength</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Cardio')">Cardio</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Core')">Core</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Upper Body')">Upper Body</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Lower Body')">Lower Body</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Mobility')">Mobility</button>
+            <button class="cat-pill" onclick="WorkoutModule.setFocus('Flexibility')">Flexibility</button>
+          </div>
+
+          <!-- Workouts Grid -->
+          <div class="workout-grid" id="workout-cards-grid">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Workout History Log Section -->
+          <div class="card" style="margin-top: 32px;" id="workout-history-container">
+            <div class="card-header flex-between" style="flex-wrap: wrap; gap: 8px;">
+              <div>
+                <h3 class="card-title">Completed Workout History</h3>
+                <p class="card-subtitle">Chronological record of completed movement sessions.</p>
+              </div>
+              <span class="sidebar-badge" id="workout-history-badge">0 Completed</span>
+            </div>
+            <div id="workout-history-list" class="stack-v" style="gap: 8px;">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 5: HYDRATION                                     -->
+        <!-- ==================================================== -->
+        <section id="tab-hydration" class="tab-pane">
+          <div class="hydration-dual-layout">
+            <!-- Left: Flask Meter -->
+            <div class="vessel-panel">
+              <div class="flask-meter">
+                <div class="flask-water" id="hydration-liquid-fill" style="height: 70%;"></div>
+              </div>
+              <div style="text-align: center; margin-top: 20px;">
+                <div style="font-size: 32px; font-weight: 800; color: var(--brand-primary);" id="hydration-pct-display">70%</div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--text-primary);" id="hydration-current-display">1,750 / 2,500 mL</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" id="hydration-remaining-display">750 mL remaining</div>
+              </div>
+            </div>
+
+            <!-- Right: Quick Register & Timeline -->
+            <div class="stack-v">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Register Fluid Intake</h3>
+                  <p class="card-subtitle">Choose a vessel or enter custom milliliters.</p>
+                </div>
+
+                <div class="quick-vessel-grid">
+                  <button class="vessel-btn-clean" onclick="HealthModule.addWater(250, 'Standard Glass (250 mL)')">
+                    <span class="vbc-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2h14l-2 19a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 2z"/></svg>
+                    </span>
+                    <span class="vbc-amount">+250 mL</span>
+                    <span class="vbc-label">Glass</span>
+                  </button>
+                  <button class="vessel-btn-clean" onclick="HealthModule.addWater(400, 'Herbal Tea (400 mL)')">
+                    <span class="vbc-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    </span>
+                    <span class="vbc-amount">+400 mL</span>
+                    <span class="vbc-label">Warm Tea</span>
+                  </button>
+                  <button class="vessel-btn-clean" onclick="HealthModule.addWater(500, 'Sports Flask (500 mL)')">
+                    <span class="vbc-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4M12 2v6l5 11a2 2 0 0 1-1.8 3H8.8A2 2 0 0 1 7 19l5-11V2"/></svg>
+                    </span>
+                    <span class="vbc-amount">+500 mL</span>
+                    <span class="vbc-label">Flask</span>
+                  </button>
+                  <button class="vessel-btn-clean" onclick="HealthModule.addWater(750, 'Large Bottle (750 mL)')">
+                    <span class="vbc-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 2h6v4l3 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l3-3V2z"/></svg>
+                    </span>
+                    <span class="vbc-amount">+750 mL</span>
+                    <span class="vbc-label">Bottle</span>
+                  </button>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 18px;">
+                  <input type="number" id="water-custom-amount" placeholder="Custom mL (e.g. 350)" style="flex:1; padding: 8px 12px; border:1px solid var(--border-subtle); border-radius: var(--radius-md);">
+                  <button class="btn btn-primary btn-sm" onclick="HealthModule.addCustomWater()">Add Fluid</button>
+                  <button class="btn btn-outline btn-sm" onclick="HealthModule.resetWater()">Reset Today</button>
+                </div>
+              </div>
+
+              <!-- Today's Intake Log -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Today's Fluid Timeline</h3>
+                </div>
+                <div id="hydration-timeline-list" class="stack-v" style="gap: 8px; max-height: 220px; overflow-y: auto;">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 6: SLEEP & CIRCADIAN                             -->
+        <!-- ==================================================== -->
+        <section id="tab-sleep" class="tab-pane">
+          <div class="kpi-row" style="margin-bottom: 24px;">
+            <div class="kpi-card">
+              <span class="kpi-label">Last Night Duration</span>
+              <h3 class="kpi-value" id="sleep-duration-val">7.5 <span class="unit">hrs</span></h3>
+              <span class="kpi-sub" id="sleep-times-val">11:15 PM &rarr; 06:45 AM</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Restoration Score</span>
+              <h3 class="kpi-value" id="sleep-score-val">88/100</h3>
+              <span class="kpi-sub"><span id="sleep-quality-badge" class="sidebar-badge" style="background:#ccfbf1; color:#0d9488;">Restful</span> Deep: 2.1h</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">7-Day Consistency</span>
+              <h3 class="kpi-value">7.6 <span class="unit">hrs</span></h3>
+              <span class="kpi-sub">Target: 8.0 hrs</span>
+            </div>
+          </div>
+
+          <div class="two-col-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Log Sleep</h3>
+                <p class="card-subtitle">Record your sleep hours and perceived quality.</p>
+              </div>
+              <form onsubmit="event.preventDefault(); HealthModule.logSleep();">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+                  <div class="form-group">
+                    <label for="sleep-log-hours">Duration (Hours) *</label>
+                    <input type="number" id="sleep-log-hours" step="0.1" value="7.5" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="sleep-log-quality">Quality</label>
+                    <select id="sleep-log-quality">
+                      <option value="Restful">Restful & Sound</option>
+                      <option value="Deep">Deep Recovery</option>
+                      <option value="Good" selected>Good / Normal</option>
+                      <option value="Light">Light</option>
+                      <option value="Restless">Restless</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Save Sleep Record</button>
+              </form>
+
+              <div style="margin-top: 24px;">
+                <h4 style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Recent 7 Nights</h4>
+                <div id="sleep-history-rows" class="stack-v" style="gap: 6px;">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Healthy Sleep Tips -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Circadian Sleep Tips</h3>
+                <p class="card-subtitle">Evidence-based sleep hygiene guidelines.</p>
+              </div>
+              <div class="stack-v" id="sleep-tips-grid">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 7: MOOD & GUIDED BREATHING                       -->
+        <!-- ==================================================== -->
+        <section id="tab-wellness" class="tab-pane">
+          <div class="two-col-grid">
+            <!-- Mood Check-In -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Daily Reflection & Mood</h3>
+                <p class="card-subtitle">How does your mind and body feel right now?</p>
+              </div>
+
+              <div class="mood-buttons-grid">
+                <button type="button" class="mood-pill-btn active" data-mood="Calm & Centered" onclick="HealthModule.selectMood('Calm & Centered')">
+                  <span class="mood-pill-symbol">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 13.5c1.5 1.5 4 1.5 5.5 0"/><circle cx="9" cy="9.5" r="0.8" fill="currentColor"/><circle cx="15" cy="9.5" r="0.8" fill="currentColor"/></svg>
+                  </span>
+                  <span>Calm</span>
+                </button>
+                <button type="button" class="mood-pill-btn" data-mood="High Energy & Joyful" onclick="HealthModule.selectMood('High Energy & Joyful')">
+                  <span class="mood-pill-symbol">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                  </span>
+                  <span>Joyful</span>
+                </button>
+                <button type="button" class="mood-pill-btn" data-mood="Grateful & Relaxed" onclick="HealthModule.selectMood('Grateful & Relaxed')">
+                  <span class="mood-pill-symbol">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  </span>
+                  <span>Grateful</span>
+                </button>
+                <button type="button" class="mood-pill-btn" data-mood="Sensitive / Low Energy" onclick="HealthModule.selectMood('Sensitive / Low Energy')">
+                  <span class="mood-pill-symbol">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/><line x1="6" y1="10" x2="6" y2="14"/></svg>
+                  </span>
+                  <span>Low Energy</span>
+                </button>
+                <button type="button" class="mood-pill-btn" data-mood="Stressed / Overwhelmed" onclick="HealthModule.selectMood('Stressed / Overwhelmed')">
+                  <span class="mood-pill-symbol">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </span>
+                  <span>Stressed</span>
+                </button>
+              </div>
+
+              <form onsubmit="event.preventDefault(); HealthModule.saveMoodEntry();" style="margin-top: 18px;">
+                <div class="form-group">
+                  <div class="flex-between">
+                    <label for="mood-energy-slider">Energy Level</label>
+                    <span id="mood-energy-val" style="font-weight: 700; color: var(--brand-primary);">8/10</span>
+                  </div>
+                  <input type="range" id="mood-energy-slider" min="1" max="10" value="8" oninput="document.getElementById('mood-energy-val').textContent = this.value + '/10';">
+                </div>
+
+                <div class="form-group">
+                  <label for="mood-stress-select">Stress Level</label>
+                  <select id="mood-stress-select">
+                    <option value="Low">Low / Tranquil</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Elevated">Elevated</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="mood-notes-input">Journal or Reflection</label>
+                  <textarea id="mood-notes-input" rows="3" placeholder="What is bringing you peace or clarity today?"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-sm">Save Reflection</button>
+              </form>
+            </div>
+
+            <!-- Guided Breathing Sessions -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Clinically Validated Breathwork</h3>
+                <p class="card-subtitle">Reset your vagus nerve and down-regulate stress.</p>
+              </div>
+
+              <div class="stack-v" style="gap: 12px;">
+                <div class="breathing-box-clean" onclick="HealthModule.startBreathingExercise('box-breathing')">
+                  <div>
+                    <strong style="display: flex; align-items: center; gap: 8px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                      4-4-4-4 Box Breathing
+                    </strong>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Inhale 4s, Hold 4s, Exhale 4s, Pause 4s. Used for calm focus.</div>
+                  </div>
+                  <button class="btn btn-white btn-xs">Start &rarr;</button>
+                </div>
+
+                <div class="breathing-box-clean" onclick="HealthModule.startBreathingExercise('calming-478')">
+                  <div>
+                    <strong style="display: flex; align-items: center; gap: 8px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                      4-7-8 Relaxation Breath
+                    </strong>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Inhale 4s, Hold 7s, Exhale 8s. Natural nervous system tranquilizer.</div>
+                  </div>
+                  <button class="btn btn-white btn-xs">Start &rarr;</button>
+                </div>
+
+                <div class="breathing-box-clean" onclick="HealthModule.startBreathingExercise('energizing-breath')">
+                  <div>
+                    <strong style="display: flex; align-items: center; gap: 8px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                      Awakening Equal Breath
+                    </strong>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Inhale 4s, Exhale 4s. Sharpens attention and oxygen flow.</div>
+                  </div>
+                  <button class="btn btn-white btn-xs">Start &rarr;</button>
+                </div>
+              </div>
+
+              <div style="margin-top: 24px;">
+                <h4 style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Grounding Techniques</h4>
+                <div class="stack-v" id="mood-suggestions-grid" style="gap: 8px;">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 8: HEALTH EDUCATION                              -->
+        <!-- ==================================================== -->
+        <section id="tab-education" class="tab-pane">
+          <div class="categories-filter-bar">
+            <button class="cat-pill active" onclick="HealthModule.setEducationCategory('all')">All Guides</button>
+            <button class="cat-pill" onclick="HealthModule.setEducationCategory('womens_health')">Women's Health</button>
+            <button class="cat-pill" onclick="HealthModule.setEducationCategory('nutrition')">Nutrition</button>
+            <button class="cat-pill" onclick="HealthModule.setEducationCategory('sleep')">Sleep Science</button>
+            <button class="cat-pill" onclick="HealthModule.setEducationCategory('wellness')">Mind & Stress</button>
+          </div>
+
+          <div class="education-clean-grid" id="education-articles-grid">
+            <!-- Rendered dynamically -->
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- TAB 9: PROGRESS & HABIT TRACKING                     -->
+        <!-- ==================================================== -->
+        <section id="tab-progress" class="tab-pane">
+          <div class="kpi-row" style="margin-bottom: 24px;">
+            <div class="kpi-card">
+              <span class="kpi-label">Current Streak</span>
+              <h3 class="kpi-value">8 Days</h3>
+              <span class="kpi-sub">Continuous daily check-ins</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Habit Completion</span>
+              <h3 class="kpi-value" id="habits-done-count">4 / 6 Done</h3>
+              <span class="kpi-sub">86% weekly adherence</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Weekly Fluid Intake</span>
+              <h3 class="kpi-value">2,420 <span class="unit">mL/day</span></h3>
+              <span class="kpi-sub">Target: 2,500 mL</span>
+            </div>
+          </div>
+
+          <div class="two-col-grid">
+            <!-- 7-Day Chart -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">7-Day Hydration Consistency</h3>
+                <p class="card-subtitle">Daily intake levels.</p>
+              </div>
+              <div style="height: 180px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;" id="progress-chart-bars">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Daily Habits List -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Daily Wellness Rituals</h3>
+                <p class="card-subtitle">Tap each habit to toggle completion.</p>
+              </div>
+              <div class="stack-v" id="progress-habits-list" style="gap: 8px;">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Completed Workouts Log -->
+          <div class="card" style="margin-top: 24px;">
+            <div class="card-header flex-between" style="flex-wrap: wrap; gap: 8px;">
+              <div>
+                <h3 class="card-title">Movement & Workout Consistency</h3>
+                <p class="card-subtitle">Completed routines synced across the platform.</p>
+              </div>
+              <span class="sidebar-badge" id="progress-workout-count-badge">0 Routines Logged</span>
+            </div>
+            <div id="progress-workout-history-list" class="stack-v" style="gap: 8px;">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODALS                                                   -->
+  <!-- ======================================================== -->
+
+  <!-- 1. Guided Breathing Modal -->
+  <div class="modal-backdrop" id="breathing-modal">
+    <div class="modal-dialog" style="max-width: 440px; text-align: center;">
+      <div class="modal-header">
+        <h3 id="breathing-modal-title" class="modal-title">Box Breathing</h3>
+        <button class="modal-close-btn" onclick="HealthModule.closeBreathingModal()">&times;</button>
+      </div>
+
+      <p id="breathing-modal-desc" style="font-size: 13px; color: var(--text-muted);">Calm focus and nervous system balance.</p>
+
+      <div class="breathing-ring-clean" id="breathing-visual-ring">
+        <span id="breathing-countdown" style="font-size: 28px; font-weight: 800; font-family: var(--font-mono); color: var(--brand-primary);">4s</span>
+      </div>
+
+      <h4 id="breathing-status-text" style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Inhale slowly through the nose...</h4>
+      <div id="breathing-cycle-counter" style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Completed Cycles: 0</div>
+
+      <button class="btn btn-primary" style="width: 100%;" onclick="HealthModule.closeBreathingModal()">Finish Breathwork</button>
+    </div>
+  </div>
+
+  <!-- 2. Active Workout Session Modal -->
+  <div class="modal-backdrop" id="workout-session-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3 id="session-modal-title" class="modal-title">Workout Routine</h3>
+          <div id="session-modal-target" style="font-size: 12.5px; color: var(--text-muted);">Target Area</div>
+        </div>
+        <button class="modal-close-btn" onclick="WorkoutModule.closeWorkoutModal()">&times;</button>
+      </div>
+
+      <div style="background: var(--bg-card-subtle); padding: 20px; border-radius: var(--radius-md); text-align: center; margin-bottom: 20px;">
+        <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Session Time</span>
+        <div id="session-timer-display" style="font-size: 40px; font-weight: 800; font-family: var(--font-mono); color: var(--text-primary); margin: 4px 0 12px 0;">00:00</div>
+        <div style="display: flex; gap: 8px; justify-content: center;">
+          <button class="btn btn-white btn-sm" id="session-pause-btn" onclick="WorkoutModule.togglePauseTimer()">Pause</button>
+          <button class="btn btn-primary btn-sm" onclick="WorkoutModule.completeWorkoutSession()">Complete Session</button>
+        </div>
+      </div>
+
+      <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 8px;">Flow Steps (Tap when finished):</h4>
+      <div id="session-exercise-list" class="stack-v" style="gap: 8px;">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Workout Detail View Modal -->
+  <div class="modal-backdrop" id="workout-detail-modal">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <div class="workout-badges-row" style="margin-bottom: 4px;" id="wd-badges-container">
+            <span class="workout-type-text" id="wd-type">Type</span>
+            <span class="workout-diff-badge" id="wd-diff">Difficulty</span>
+          </div>
+          <h3 id="wd-title" class="modal-title">Workout Routine Title</h3>
+        </div>
+        <button class="modal-close-btn" onclick="WorkoutModule.closeWorkoutDetail()">&times;</button>
+      </div>
+
+      <p id="wd-desc" style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">Description</p>
+
+      <div class="workout-specs-box" style="margin-bottom: 18px;" id="wd-specs-box">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Warm-up Section -->
+      <div class="workout-phase-card workout-warmup-box" style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 16px;">
+        <span style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase; display: flex; align-items: center; gap: 4px; margin-bottom: 4px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Warm-Up Routine (5 Minutes)
+        </span>
+        <div id="wd-warmup" style="font-size: 13px; color: var(--text-secondary);">Warm-up description</div>
+      </div>
+
+      <!-- Exercise Routine Flow -->
+      <h4 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Exercises Included (Tap for Full Form Tutorial):</h4>
+      <div id="wd-exercises-list" class="stack-v" style="gap: 10px; margin-bottom: 18px;">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Cool-down Section -->
+      <div class="workout-phase-card workout-cooldown-box" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 20px;">
+        <span style="font-size: 11px; font-weight: 700; color: #15803d; text-transform: uppercase; display: flex; align-items: center; gap: 4px; margin-bottom: 4px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Cool-Down & Recovery (5 Minutes)
+        </span>
+        <div id="wd-cooldown" style="font-size: 13px; color: var(--text-secondary);">Cool-down description</div>
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button class="btn btn-white" onclick="WorkoutModule.closeWorkoutDetail()">Back to Library</button>
+        <button class="btn btn-primary" id="wd-start-btn" onclick="WorkoutModule.startFromDetail()">Start Interactive Routine</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Exercise Tutorial Modal -->
+  <div class="modal-backdrop" id="exercise-tutorial-modal">
+    <div class="modal-dialog" style="max-width: 660px;">
+      <div class="modal-header">
+        <div>
+          <span class="food-cat-badge" id="ex-modal-target" style="margin-bottom: 4px; display: inline-block;">Target Area</span>
+          <h3 id="ex-modal-title" class="modal-title">Exercise Tutorial</h3>
+        </div>
+        <button class="modal-close-btn" onclick="WorkoutModule.closeExerciseTutorial()">&times;</button>
+      </div>
+
+      <!-- Multi-Stage Movement Visuals (Real Exercise Visual Demonstration) -->
+      <div id="ex-modal-stages" class="tutorial-stages-grid" style="display: none;">
+        <!-- Rendered dynamically with Stage 1 and Stage 2 visuals -->
+      </div>
+
+      <!-- Exercise Visual Demonstration Diagram -->
+      <div class="tutorial-visual-box" id="ex-modal-visual">
+        <!-- Rendered dynamically with SVG movement diagram -->
+      </div>
+
+      <div class="workout-specs-box" style="margin-bottom: 16px;">
+        <div class="spec-cell">
+          <span class="spec-label">Sets & Reps</span>
+          <span class="spec-val" id="ex-modal-sets-reps">3 × 10</span>
+        </div>
+        <div class="spec-cell">
+          <span class="spec-label">Rest Interval</span>
+          <span class="spec-val" id="ex-modal-rest">45 sec</span>
+        </div>
+        <div class="spec-cell">
+          <span class="spec-label">Equipment</span>
+          <span class="spec-val" id="ex-modal-equip">Bodyweight</span>
+        </div>
+      </div>
+
+      <!-- Step-by-Step Instructions -->
+      <h4 style="font-size: 13.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Step-by-Step Instructions:</h4>
+      <div id="ex-modal-steps" style="margin-bottom: 16px;">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Proper Form Guidance -->
+      <div class="form-tip-card">
+        <strong style="color: #15803d; font-size: 12.5px; display: flex; align-items: center; gap: 5px; margin-bottom: 4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Proper Form Guidance
+        </strong>
+        <p id="ex-modal-form" style="font-size: 12.5px; color: var(--text-secondary); margin: 0;"></p>
+      </div>
+
+      <!-- Common Mistakes -->
+      <div class="mistake-tip-card">
+        <strong style="color: #b91c1c; font-size: 12.5px; display: flex; align-items: center; gap: 5px; margin-bottom: 4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Common Mistakes to Avoid
+        </strong>
+        <ul id="ex-modal-mistakes" style="font-size: 12px; color: var(--text-secondary); padding-left: 20px; margin: 4px 0 0 0;"></ul>
+      </div>
+
+      <!-- Modification & Progression -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; margin-bottom: 20px;">
+        <div style="background: var(--bg-card-subtle); padding: 12px; border-radius: var(--radius-md);">
+          <span style="font-size: 11px; font-weight: 700; color: #0284c7; text-transform: uppercase;">Beginner Modification</span>
+          <p id="ex-modal-mod" style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"></p>
+        </div>
+        <div style="background: var(--bg-card-subtle); padding: 12px; border-radius: var(--radius-md);">
+          <span style="font-size: 11px; font-weight: 700; color: #7c3aed; text-transform: uppercase;">Optional Progression</span>
+          <p id="ex-modal-prog" style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;"></p>
+        </div>
+      </div>
+
+      <div style="text-align: right;">
+        <button class="btn btn-white" onclick="WorkoutModule.closeExerciseTutorial()">Close Tutorial</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Food Detail Modal -->
+  <div class="modal-backdrop" id="food-detail-modal">
+    <div class="modal-dialog" style="max-width: 620px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div id="food-modal-icon-box" style="width: 44px; height: 44px; border-radius: var(--radius-md); background: #f0fdf4; border: 1px solid #bbf7d0; display: flex; align-items: center; justify-content: center; color: var(--brand-primary);"></div>
+          <div>
+            <span class="food-cat-badge" id="food-modal-cat">Category</span>
+            <h3 id="food-modal-name" class="modal-title" style="margin-top: 2px;">Food Name</h3>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="HealthModule.closeFoodModal()">&times;</button>
+      </div>
+
+      <!-- Food Hero Image Container -->
+      <div class="food-modal-hero-wrap" id="food-modal-hero-container" style="display: none;">
+        <img id="food-modal-hero-img" class="food-modal-hero-img" src="" alt="Food visual" loading="lazy" onerror="this.parentElement.style.display='none';">
+        <span class="food-card-attribution" id="food-modal-attribution">Unsplash / Freely Reusable</span>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; background: var(--bg-card-subtle); padding: 8px 14px; border-radius: var(--radius-md); font-size: 12.5px; color: var(--text-secondary); margin-bottom: 16px;">
+        <span>Reference Serving Size:</span>
+        <strong id="food-modal-serving" style="color: var(--text-primary);">1 serving</strong>
+      </div>
+
+      <!-- Macronutrient Breakdown Grid -->
+      <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Nutritional Profile</span>
+      <div class="macro-grid-5" id="food-modal-macros">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Micronutrients Tags -->
+      <div style="margin-bottom: 16px;">
+        <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 6px;">Key Vitamins & Minerals</span>
+        <div id="food-modal-vitamins" class="food-tag-list" style="margin-bottom: 0;"></div>
+      </div>
+
+      <!-- Health Benefits -->
+      <div class="food-benefits-box" style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 14px;">
+        <strong style="font-size: 12.5px; color: var(--text-primary); display: flex; align-items: center; gap: 5px; margin-bottom: 4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Why It Nourishes (General Benefits)
+        </strong>
+        <p id="food-modal-benefits" style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;"></p>
+      </div>
+
+      <!-- Ways to Include in Meals -->
+      <div style="background: var(--bg-card-subtle); border-radius: var(--radius-md); padding: 14px; margin-bottom: 20px;">
+        <strong style="font-size: 12.5px; color: var(--text-primary); display: flex; align-items: center; gap: 5px; margin-bottom: 4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+          Everyday Culinary Uses & Serving Ideas
+        </strong>
+        <p id="food-modal-tip" style="font-size: 12.5px; color: var(--text-secondary); margin-bottom: 8px;"></p>
+        <ul id="food-modal-ideas" style="font-size: 12px; color: var(--text-secondary); padding-left: 18px; margin: 0;"></ul>
+      </div>
+
+      <div style="text-align: right;">
+        <button class="btn btn-white" onclick="HealthModule.closeFoodModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Article Detail Modal -->
+  <div class="modal-backdrop" id="article-detail-modal">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <span id="article-modal-badge" class="dw-badge" style="font-size: 11px;">GUIDE</span>
+          <h3 id="article-modal-title" class="modal-title">Article Title</h3>
+        </div>
+        <button class="modal-close-btn" onclick="HealthModule.closeArticleModal()">&times;</button>
+      </div>
+      <div id="article-modal-body" style="font-size: 14px; line-height: 1.7; color: var(--text-secondary);">
+        <!-- Rendered dynamically -->
+      </div>
+      <div style="margin-top: 24px; text-align: right;">
+        <button class="btn btn-white" onclick="HealthModule.closeArticleModal()">Close Guide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Control Center / Preferences Modal -->
+  <div class="modal-backdrop" id="control-center-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Studio Settings & Goals</h3>
+        <button class="modal-close-btn" onclick="window.app.closeModal('control-center-modal')">&times;</button>
+      </div>
+
+      <form onsubmit="event.preventDefault(); window.app.saveControlGoals();">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div class="form-group">
+            <label for="cfg-user-name">Your Name</label>
+            <input type="text" id="cfg-user-name" value="Elena">
+          </div>
+          <div class="form-group">
+            <label for="cfg-water-target">Hydration Goal (mL)</label>
+            <input type="number" id="cfg-water-target" value="2500" step="100">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+          <div class="form-group">
+            <label for="cfg-sleep-target">Sleep Target (Hours)</label>
+            <input type="number" id="cfg-sleep-target" value="8" step="0.5">
+          </div>
+          <div class="form-group">
+            <label for="cfg-cycle-length">Cycle Length (Days)</label>
+            <input type="number" id="cfg-cycle-length" value="28" min="20" max="45">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Data Management</label>
+          <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-white btn-sm" onclick="window.app.exportFullBackupJSON()">Export Backup (JSON)</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.app.resetAllApplicationData()">Reset Defaults</button>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/health.js"></script>
+  <script src="js/workout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

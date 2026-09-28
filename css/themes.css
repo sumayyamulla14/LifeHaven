@@ -1,0 +1,546 @@
+/* ==========================================================
+   LIFE HAVEN — THEMES (CAREER DESK DESKTOP PORTAL)
+   Clean modern Light Mode default, with Dark Mode adaptation.
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   1. LIGHT MODE (Career Desk Default — Pristine & Unchanged)
+   ---------------------------------------------------------- */
+:root,
+body[data-theme="light"],
+body:not([data-theme="dark"]) {
+  --bg-app: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f1f5f9;
+  --bg-card-hover: #f8fafc;
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-focus: #0d9488;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-on-primary: #ffffff;
+  --brand-primary: #0d9488;
+  --brand-primary-light: #ccfbf1;
+  --brand-primary-hover: #0f766e;
+  --brand-secondary: #0284c7;
+  --brand-rose: #e11d48;
+  --brand-rose-light: #ffe4e6;
+  --brand-amber: #f59e0b;
+  --brand-amber-light: #fef3c7;
+  --brand-purple: #7c3aed;
+  --brand-purple-light: #ede9fe;
+}
+
+/* ----------------------------------------------------------
+   2. DARK MODE (High-Contrast, Refined Slate & Emerald)
+   Hierarchical contrast:
+   bg-app (#0b0f19) -> bg-card (#151e32) -> bg-card-subtle (#1e293b) -> border (#222f46)
+   ---------------------------------------------------------- */
+body[data-theme="dark"] {
+  --bg-app: #0b0f19;
+  --bg-sidebar: #0f172a;
+  --bg-header: #0f172a;
+  --bg-card: #151e32;
+  --bg-card-subtle: #1e293b;
+  --bg-card-hover: #223048;
+  
+  --border-subtle: #222f46;
+  --border-medium: #334155;
+  --border-focus: #2dd4bf;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #8e9fb5;
+  --text-on-primary: #ffffff;
+  
+  --brand-primary: #14b8a6;
+  --brand-primary-light: rgba(20, 184, 166, 0.15);
+  --brand-primary-hover: #0d9488;
+  
+  --brand-secondary: #38bdf8;
+  --brand-rose: #f43f5e;
+  --brand-rose-light: rgba(244, 63, 94, 0.15);
+  --brand-amber: #fbbf24;
+  --brand-amber-light: rgba(251, 191, 36, 0.15);
+  --brand-purple: #a78bfa;
+  --brand-purple-light: rgba(167, 139, 250, 0.15);
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.55);
+}
+
+/* Base Body in Dark Mode */
+body[data-theme="dark"] {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
+
+/* App Header & Navigation */
+body[data-theme="dark"] .top-navbar {
+  background: var(--bg-header);
+  border-bottom-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .app-sidebar {
+  background: var(--bg-sidebar);
+  border-right-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .sidebar-header {
+  border-bottom-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .sidebar-footer {
+  border-top-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .sidebar-item {
+  color: #94a3b8;
+}
+
+body[data-theme="dark"] .sidebar-item:hover {
+  background: var(--bg-card-subtle);
+  color: var(--text-primary);
+}
+
+body[data-theme="dark"] .sidebar-item.active {
+  background: rgba(20, 184, 166, 0.12);
+  color: var(--brand-primary);
+  border-left-color: var(--brand-primary);
+}
+
+body[data-theme="dark"] .sidebar-badge {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] .nav-section-label {
+  color: #64748b;
+}
+
+body[data-theme="dark"] .clock-widget {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] .top-nav-search {
+  background: #151e32;
+  border-color: #334155;
+}
+
+body[data-theme="dark"] .top-nav-search input {
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .top-nav-search input::placeholder {
+  color: #64748b;
+}
+
+/* Buttons in Dark Mode */
+body[data-theme="dark"] .btn-white {
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+body[data-theme="dark"] .btn-white:hover {
+  background: #27354d;
+  border-color: #475569;
+}
+
+body[data-theme="dark"] .btn-outline {
+  background: transparent;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+body[data-theme="dark"] .btn-outline:hover {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+body[data-theme="dark"] .btn-icon-only {
+  background: #1e293b;
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+body[data-theme="dark"] .btn-icon-only:hover {
+  background: #27354d;
+  color: #ffffff;
+}
+
+/* Cards & Panels in Dark Mode */
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .kpi-card,
+body[data-theme="dark"] .workout-card,
+body[data-theme="dark"] .food-card,
+body[data-theme="dark"] .meal-card,
+body[data-theme="dark"] .plate-pillar-card,
+body[data-theme="dark"] .wh-topic-card,
+body[data-theme="dark"] .edu-article-card {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+body[data-theme="dark"] .card-header {
+  border-bottom-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .kpi-card:hover,
+body[data-theme="dark"] .workout-card:hover,
+body[data-theme="dark"] .food-card:hover,
+body[data-theme="dark"] .meal-card:hover {
+  border-color: #334155;
+}
+
+body[data-theme="dark"] .kpi-progress {
+  background: #1e293b;
+}
+
+/* Banners in Dark Mode */
+body[data-theme="dark"] .dashboard-welcome-banner {
+  background: linear-gradient(135deg, #131c30, #151e32) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+body[data-theme="dark"] .dw-badge {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .dw-title {
+  color: #f8fafc !important;
+}
+
+body[data-theme="dark"] .dw-desc {
+  color: #94a3b8 !important;
+}
+
+/* Tabs & Filter Bars in Dark Mode */
+body[data-theme="dark"] .subnav-tabs-bar {
+  background: #131b2e;
+  border-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .subnav-tab-btn {
+  color: #94a3b8;
+}
+
+body[data-theme="dark"] .subnav-tab-btn:hover {
+  color: #f8fafc;
+  background: #1a253c;
+}
+
+body[data-theme="dark"] .subnav-tab-btn.active {
+  background: #1e2b44;
+  color: #f8fafc;
+  border-color: #334155;
+  box-shadow: var(--shadow-xs);
+}
+
+body[data-theme="dark"] .cat-pill {
+  background: #151e32;
+  border-color: #2e3d58;
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] .cat-pill:hover {
+  background: #1e2b44;
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .cat-pill.active {
+  background: #0d9488;
+  border-color: #0d9488;
+  color: #ffffff;
+}
+
+/* Search Bars & Inputs in Dark Mode */
+body[data-theme="dark"] .library-search-bar {
+  background: #151e32;
+  border-color: #334155;
+}
+
+body[data-theme="dark"] .library-search-input {
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .library-search-input::placeholder {
+  color: #64748b;
+}
+
+body[data-theme="dark"] .form-group input,
+body[data-theme="dark"] .form-group select,
+body[data-theme="dark"] .form-group textarea {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .form-group input:focus,
+body[data-theme="dark"] .form-group select:focus,
+body[data-theme="dark"] .form-group textarea:focus {
+  border-color: var(--brand-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2);
+}
+
+body[data-theme="dark"] select option {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .form-group label {
+  color: #cbd5e1;
+}
+
+/* Modals in Dark Mode */
+body[data-theme="dark"] .modal-backdrop {
+  background: rgba(4, 8, 16, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+body[data-theme="dark"] .modal-dialog {
+  background: #151e32;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.65);
+}
+
+body[data-theme="dark"] .modal-header {
+  border-bottom-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .modal-title {
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .modal-close-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+body[data-theme="dark"] .modal-close-btn:hover {
+  background: #27354d;
+  color: #f8fafc;
+}
+
+/* Food & Nutrition Components in Dark Mode */
+body[data-theme="dark"] .food-tag-pill {
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #2e3d58;
+}
+
+body[data-theme="dark"] .food-cat-badge {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+body[data-theme="dark"] .food-tip-box {
+  border-top-color: var(--border-subtle);
+  color: var(--brand-primary);
+}
+
+body[data-theme="dark"] .meal-ingredients-list {
+  background: #1a263d;
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] .macro-cell {
+  background: #1a263d;
+  border-color: #2e3d58;
+}
+
+body[data-theme="dark"] .macro-cell-val {
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .macro-cell-lbl {
+  color: #8e9fb5;
+}
+
+/* Workouts & Tutorials in Dark Mode */
+body[data-theme="dark"] .tutorial-visual-box {
+  background: #101726;
+  border-color: #243149;
+}
+
+body[data-theme="dark"] .tutorial-step-row {
+  border-bottom-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .tutorial-step-num {
+  background: #1e293b;
+  color: var(--brand-primary);
+  border: 1px solid #334155;
+}
+
+body[data-theme="dark"] .form-tip-card {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+body[data-theme="dark"] .mistake-tip-card {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+/* Calendar in Dark Mode */
+body[data-theme="dark"] .calendar-box {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .cal-weekdays {
+  color: #8e9fb5;
+  border-bottom-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .cal-day-cell {
+  color: #f8fafc;
+  border-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .cal-day-cell.pad {
+  color: #475569;
+  opacity: 0.35;
+}
+
+body[data-theme="dark"] .cal-day-cell:hover {
+  background: var(--bg-card-hover);
+}
+
+body[data-theme="dark"] .cal-day-cell.today {
+  border-color: var(--brand-primary);
+  background: rgba(20, 184, 166, 0.1);
+}
+
+body[data-theme="dark"] .symptom-tag-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] .symptom-tag-btn:hover {
+  background: #27354d;
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .symptom-tag-btn.active {
+  background: var(--brand-rose);
+  border-color: var(--brand-rose);
+  color: #ffffff;
+}
+
+/* Period Calendar States in Dark Mode */
+body[data-theme="dark"] .cal-day-cell.period-flow {
+  background: rgba(225, 29, 72, 0.22);
+  color: #fb7185;
+}
+
+body[data-theme="dark"] .cal-day-cell.period-predicted {
+  background: rgba(251, 113, 133, 0.12);
+  border: 1px dashed #fb7185;
+  color: #fda4af;
+}
+
+body[data-theme="dark"] .cal-day-cell.period-ovulation {
+  background: rgba(124, 58, 237, 0.22);
+  color: #c4b5fd;
+}
+
+/* Hydration Vessel & Flask in Dark Mode */
+body[data-theme="dark"] .flask-meter {
+  background: #0f1c2c;
+  border-color: #115e59;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+body[data-theme="dark"] .vessel-btn-clean:hover {
+  background: #1e293b;
+  border-color: var(--brand-primary);
+}
+
+/* Mood Selection in Dark Mode */
+body[data-theme="dark"] .mood-pill-btn:hover {
+  background: #223048;
+  border-color: #334155;
+}
+
+/* Workout & Food Phase Boxes in Dark Mode */
+body[data-theme="dark"] .workout-warmup-box {
+  background: rgba(2, 132, 199, 0.12) !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+}
+
+body[data-theme="dark"] .workout-cooldown-box {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+
+body[data-theme="dark"] .food-benefits-box {
+  background: #1a263d !important;
+  border-color: var(--border-subtle) !important;
+}
+
+body[data-theme="dark"] #food-modal-icon-box {
+  background: rgba(20, 184, 166, 0.15) !important;
+  border-color: rgba(20, 184, 166, 0.3) !important;
+}
+
+/* Habits, Sleep & Mood in Dark Mode */
+body[data-theme="dark"] .habit-row-clean {
+  background: #1a263d;
+  border-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .habit-row-clean:hover {
+  background: #223048;
+}
+
+body[data-theme="dark"] .habit-row-clean.done {
+  background: rgba(13, 148, 136, 0.14);
+  border-color: rgba(13, 148, 136, 0.32);
+}
+
+body[data-theme="dark"] .sleep-tip-card-clean {
+  background: #1a263d;
+  border-color: var(--border-subtle);
+}
+
+body[data-theme="dark"] .mood-tag-btn {
+  background: #1a263d;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+body[data-theme="dark"] .mood-tag-btn:hover {
+  background: #27354d;
+  color: #f8fafc;
+}
+
+body[data-theme="dark"] .mood-tag-btn.active {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+/* Smooth Transitions for Theme Switch */
+body.theme-transitioning,
+body.theme-transitioning * {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+}

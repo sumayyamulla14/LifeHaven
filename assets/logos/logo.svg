@@ -1,0 +1,21 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lhLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="lhGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Haven Sanctuary Shield Outer Contour -->
+  <path d="M20 4.5 L34 10.5 V19.5 C34 27.5 20 35.5 20 35.5 C20 35.5 6 27.5 6 19.5 V10.5 L20 4.5 Z" 
+        stroke="url(#lhLogoGrad)" stroke-width="2.5" stroke-linejoin="round" fill="rgba(16, 185, 129, 0.08)"/>
+  <!-- Inner Vitality Haven Arc -->
+  <path d="M20 9 L30 13.5 V19 C30 25 20 31 20 31 C20 31 10 25 10 19 V13.5 L20 9 Z" 
+        stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <!-- Precision Health Heartbeat Pulse -->
+  <path d="M12 20.5 H15.5 L17.8 14.5 L21.5 25 L23.8 20.5 H28" 
+        stroke="#10b981" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#lhGlow)"/>
+</svg>
