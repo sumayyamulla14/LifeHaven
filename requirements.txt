@@ -1,7 +1,8 @@
 # Life Haven — Women's Wellness & Hormonal Vitality Platform
-# Python Backend & Supabase Dependencies
-
-python-dotenv>=1.0.0
-pytest>=8.0.0
-requests>=2.31.0
-supabase>=2.15.0
+# -----------------------------------------------------------------------------
+# The existing Life Haven Python backend (server.py, backend/, tests/) is built
+# entirely using the Python 3.10+ Standard Library (http.server, socketserver,
+# json, urllib, unittest, dataclasses).
+#
+# No external third-party pip dependencies are required to run the application
+# locally or execute the test suite.
